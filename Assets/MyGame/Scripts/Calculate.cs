@@ -57,4 +57,8 @@ public class Calculate : MonoBehaviour
         Debug.Log("Finished Coroutine at timestamp : " + Time.time);
         SceneManager.LoadScene(0);
     }
+    public void Restart()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
