@@ -1,6 +1,9 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Calculate : MonoBehaviour
 {
@@ -12,21 +15,21 @@ public class Calculate : MonoBehaviour
     [SerializeField]
     private Text Guestxt;
     private bool cangues = true ;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    
+    private void Start()
     {
+        //Setzt den Ersten Gues
         guess = (guesMin + guesMax) / 2;
+        //Setzt den Text auf Guess und Nachricht
         Guestxt.text = "is your Number " + guess + "?";
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        //wenn es nicht Correct ist wird der Gues text Aktualisiert
         if (cangues == true)
         {
             Guestxt.text = "is your Number " + guess + "?";
         }
-        
     }
     public void guesHigher()
     {
@@ -40,10 +43,18 @@ public class Calculate : MonoBehaviour
     }
     public void CorrectGues()
     {
+        //setzt die Schrift Größe auf 30 setzt den Text auf den Win text, Blendet die Buttons aus
         cangues = false;
         Guestxt.fontSize = 30;
-        Guestxt.text = "I guesed your Number " + guesMin + "!";
+        Guestxt.text = "I guessed your Number " + guesMin + "!";
         Button1.SetActive(false);
         Button2.SetActive(false);
+        TimerForRestart();
+    }
+    private IEnumerator TimerForRestart()
+    {
+        yield return new WaitForSeconds(5);
+        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+        SceneManager.LoadScene(0);
     }
 }
