@@ -21,4 +21,9 @@ public class Calculate : MonoBehaviour
         Guestxt.text = "is your Number " + guess + "?";
         
     }
+    public void guesHigher()
+    {
+        guesMin = guess;
+        guess = (guesMin + guesMax) / 2;
+    }
 }
