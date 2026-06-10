@@ -49,7 +49,7 @@ public class Calculate : MonoBehaviour
         Guestxt.text = "I guessed your Number " + guesMin + "!";
         Button1.SetActive(false);
         Button2.SetActive(false);
-        TimerForRestart();
+        StartCoroutine(TimerForRestart());
     }
     private IEnumerator TimerForRestart()
     {
