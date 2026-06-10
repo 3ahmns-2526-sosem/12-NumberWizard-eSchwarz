@@ -23,7 +23,12 @@ public class Calculate : MonoBehaviour
     }
     public void guesHigher()
     {
-        guesMin = guess;
+        guesMin = guess -1;
+        guess = (guesMin + guesMax) / 2;
+    }
+    public void guessLower()
+    {
+        guesMax = guess - 1;
         guess = (guesMin + guesMax) / 2;
     }
 }
